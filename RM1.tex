@@ -1,0 +1,1513 @@
+% !TeX program = xelatex
+
+\documentclass[usenames,11,dvipsnames,svgnames,x11names,aspectratio=1610,bibref, codeminted]{beamer}
+% > > > Bibliography File 
+\newcommand{\bibfilename}{mhoreferences.bib}
+% > > > Choose Theme
+\usetheme[mode=light]{sthlmnord}
+%\usetheme{sthlmnord}
+\usepackage{booktabs} % For \toprule, \midrule, and \bottomrule
+% \usepackage[table]{xcolor} % Required for \rowcolor
+\usepackage{multirow} % Required for \multirow
+\usepackage[normalem]{ulem}                 % \uline
+\usepackage{multicol}
+\usepackage{colortbl}
+\usepackage{tikz}
+% \usepackage[]{roboto-mono}
+\usepackage{enumitem}
+\usepackage{xspace}
+\usepackage{awesomebox}
+% \usepackage[font=scriptsize,labelfont=bf]{caption}
+\usepackage{subcaption} % for captionof
+% \usepackage{cleveref}
+
+% \usepackage{titlesec} % paragraph symbol \S
+\usepackage{underscore} % to write underscores without escaping them
+\usepackage{fontspec}
+\usepackage[all]{tcolorbox}     % listing
+\usepackage{minted}
+\usemintedstyle{tango}
+\usepackage{xparse}
+\usepackage{paralist}                       % compactitem, compactenum
+\usepackage{fontawesome5}
+\usepackage{pgfornament}
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\myChevron}{~\textcolor{Tomato}{\faChevronRight}~}
+
+% FONTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newfontfamily{\orbitron}{orbitron}[
+    Path=./fonts/orbitron/,
+    Extension = .otf,
+    UprightFont = *-light,
+    BoldFont = *-medium
+    ]
+    
+\newfontfamily{\RobotoMonoFamily}[Scale=MatchLowercase]{robotomono}[
+    Path=./fonts/robotomono/,
+    Extension = .ttf,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic,
+    ItalicFont = *-Italic,
+    NFSSFamily=RobotoMonoFamily
+    ]
+
+\newfontfamily\MyCodeFont{RobotoMono}[
+    Path=./fonts/robotomono/,
+    Extension = .ttf,
+    UprightFont = *-Regular,
+    BoldFont = *-SemiBold,
+    BoldItalicFont = *-SemiBoldItalic,
+    ItalicFont = *-Italic,
+    Scale=MatchLowercase,
+    NFSSFamily=MyCodeFontFamily,
+    Numbers = {OldStyle},
+    Ligatures=Required
+    ]
+
+\newfontfamily\Raleway{Raleway}[
+    Path=./fonts/raleway/,
+    Extension = .ttf,
+    UprightFont = *-Regular,
+    BoldFont = *-Medium,
+    BoldItalicFont = *-SemiBoldItalic,
+    ItalicFont = *-Italic,
+    Scale=MatchLowercase,
+    NFSSFamily=RalewayFamily,
+    Numbers = {OldStyle},
+    Ligatures=Required
+    ]
+
+\newfontfamily\RalewayLight{Raleway}[
+    Path=./fonts/raleway/,
+    Extension = .ttf,
+    UprightFont = *-Light,
+    BoldFont = *-Light,
+    BoldItalicFont = *-Light,
+    ItalicFont = *-Light,
+    Scale=MatchLowercase,
+    NFSSFamily=RalewayFamily,
+    Numbers = {OldStyle},
+    Ligatures=Required
+    ]
+    
+\newfontfamily\RalewaySemiBold{Raleway}[
+    Path=./fonts/raleway/,
+    Extension = .ttf,
+    UprightFont = *-SemiBold,
+    Scale=MatchLowercase,
+    NFSSFamily=RalewayFamily,
+    Numbers = {OldStyle},
+    Ligatures=Required
+    ]
+
+\newfontfamily\RalewayExtraBold{Raleway}[
+    Path=./fonts/raleway/,
+    Extension = .ttf,
+    UprightFont = *-ExtraBold,
+    Scale=MatchLowercase,
+    NFSSFamily=RalewayFamily,
+    Numbers = {OldStyle},
+    Ligatures=Required
+    ]
+
+\newfontfamily\RalewayBold{Raleway}[
+    Path=./fonts/raleway/,
+    Extension = .ttf,
+    UprightFont = *-Bold,
+    Scale=MatchLowercase,
+    NFSSFamily=RalewayFamily,
+    Numbers = {OldStyle},
+    Ligatures=Required
+    ]
+% \newfontfamily\monaco{Arial}[NFSSFamily=ArialFamily]
+% \setminted[matlab]{fontfamily=ArialFamily}
+
+% \newfontfamily{\raleway}{Raleway}[
+%     Path=./fonts/raleway/,
+%     Extension = .ttf,
+%     UprightFont = *-Medium,
+%     BoldFont = *-Bold,
+%     BoldItalicFont = *-BoldItalic,
+%     ItalicFont = *-Italic
+%     ]
+
+\newcommand{\myVersion}{\Raleway{v1.0}}
+    
+    
+    
+% \newfontfamily{\ralewayII}{Raleway}[
+%     Path=./fonts/raleway/,
+%     Extension = .ttf,
+%     UprightFont = *-Light,
+%     BoldFont = *-SemiBold,
+%     BoldItalicFont = *-SemiBoldItalic,
+%     ItalicFont = *-LightItalic
+%     ]
+
+% \newfontfamily{\ralewayIII}{Raleway}[
+%     Path=./fonts/raleway/,
+%     Extension = .ttf,
+%     UprightFont = *-Thin,
+%     BoldFont = *-Bold,
+%     BoldItalicFont = *-BoldItalic,
+%     ItalicFont = *-Italic
+%     ]
+    
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% code error
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{coderror}{HTML}{f06b6b}
+\newcommand{\codeerror}{\textcolor{Red3}{\bf error}}
+\newcommand{\codeok}{\textcolor{PaleGreen4}{\bf ok}}
+\newcommand{\codeerrorII}[1]{\textcolor{coderror}{\bf #1}}
+\newcommand{\codeWrong}{\textcolor{Red3}{\faTimesCircle}}
+\newcommand{\codeRight}{\textcolor{PaleGreen4}{\faCheckCircle}}
+
+\definecolor{definitioncolor}{HTML}{3C415C}
+\newcommand{\mydefinitioncolor}[1]{\textcolor{definitioncolor}{#1}}
+
+\definecolor{sectionchevron}{HTML}{76BA99}
+\newcommand{\sectionColor}[1]{\textcolor{LawnGreen}{#1}}
+
+\definecolor{subsectionchevron}{HTML}{ADCF9F}
+\newcommand{\subsectionColor}[1]{\textcolor{LawnGreen}{#1}}
+
+\definecolor{subsubsectionchevron}{HTML}{CED89E}
+\newcommand{\subsubsectionColor}[1]{\textcolor{LawnGreen}{#1}}
+
+\definecolor{customcolor}{HTML}{A77979}
+\definecolor{citationcolor}{HTML}{F67280}
+\newcommand{\citationcolor}[1]{\textcolor{nordEleven}{#1}}
+
+
+
+\definecolor{iconColor}{HTML}{383E56}
+\definecolor{iconWarningColor}{HTML}{FA370E}
+\definecolor{iconOkColor}{HTML}{00A8CC}
+\definecolor{iconBestPracticeColor}{HTML}{00A8CC}
+\newcommand{\iconColor}[1]{\textcolor{iconColor}{#1}}
+\newcommand{\iconWarningColor}[1]{\textcolor{iconWarningColor}{#1}}
+\newcommand{\iconBestPracticeColor}[1]{\textcolor{DodgerBlue}{#1}}
+
+\newcommand{\iconOKColor}[1]{\textcolor{iconOkColor}{#1}}
+
+\definecolor{codecolor1}{HTML}{004822}
+\newcommand{\codecolorI}[1]{\textcolor{DeepPink1}{\bf #1}}
+\definecolor{codecolor2}{HTML}{FD3135}
+\newcommand{\codecolorII}[1]{\textcolor{DeepSkyBlue4}{\bf #1}}
+\definecolor{codecolor3}{HTML}{0E6B8C}
+\newcommand{\codecolorIII}[1]{\textcolor{IndianRed1}{\bf #1}}
+
+
+\newcommand{\commentOK}[1]{\textcolor{DeepSkyBlue4}{#1}}
+\newcommand{\commentBAD}[1]{\textcolor{red}{#1}}
+\newcommand{\commentBLUE}[1]{\textcolor{MidnightBlue}{#1}}
+\newcommand{\commentGREEN}[1]{\textcolor{ForestGreen}{#1}}
+\newcommand{\commentHEADER}[1]{\textcolor{DeepPink2}{#1}}
+\newcommand{\commentSOURCE}[1]{\textcolor{DarkOrchid2}{#1}}
+
+
+\newcommand{\crosmsgComment}[1]{{\color{nordThree}{\textit{#1}}}}
+\definecolor{disclaimer}{HTML}{EBCB8B}  
+\newcommand{\mydisclaimer}{{\color{nordTen!10}{\footnotesize RM2~}}}
+\newcommand{\codeprovided}{{\color{nordTen!10}{\footnotesize \textcolor{yellow}{\faCode}}}}
+
+\newcommand{\debugProvided}{{\color{nordTen!10}{\footnotesize \textcolor{yellow}{\faBug~\faCode}}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% line number customized
+\renewcommand{\theFancyVerbLine}{\textcolor{nordOne}{\bf\scriptsize\arabic{FancyVerbLine}}}
+\newcommand{\myline}[1]{{\textcolor{nordTwo}{\textbf{{#1}}}}}
+% \setlength{\FancyVerbIndent}{5pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Directory tree
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[edges]{forest}
+
+\newlength\Size
+\setlength\Size{4pt}
+\tikzset{%
+  folder/.pic={%
+  \node[inner sep=0pt] (folder) at (0.16,0)
+    {\normalsize\textcolor{black}{\faFolderOpen}};
+    % \filldraw [draw=folderborder, top color=folderbg!50, bottom color=folderbg] (-1.05*\Size,0.2\Size+5pt) rectangle ++(.75*\Size,-0.2\Size-5pt);
+    % \filldraw [draw=folderborder, top color=folderbg!50, bottom color=folderbg] (-1.15*\Size,-\Size) rectangle (1.15*\Size,\Size);
+  },
+  file/.pic={%
+  \node[inner sep=0pt] (file) at (0.13,0)
+    {\normalsize\faFile*[regular]};
+    % \filldraw [draw=folderborder, top color=folderbg!5, bottom color=folderbg!10] (-\Size,.4*\Size+5pt) coordinate (a) |- (\Size,-1.2*\Size) coordinate (b) -- ++(0,1.6*\Size) coordinate (c) -- ++(-5pt,5pt) coordinate (d) -- cycle (d) |- (c) ;
+  },
+}
+\forestset{%
+  declare autowrapped toks={pic me}{},
+  declare boolean register={pic root},
+  pic root=0,
+  pic dir tree/.style={%
+    for tree={%
+      folder,
+      font=\raleway,
+      grow'=0,
+      l=0,
+    },
+    before typesetting nodes={%
+      for tree={%
+        edge label+/.option={pic me},
+        l=0,
+      },
+      if pic root={
+        tikz+={
+          \pic at ([xshift=\Size].west) {folder};
+        },
+        align={l}
+      }{},
+    },
+  },
+  pic me set/.code n args=2{%
+    \forestset{%
+      #1/.style={%
+        inner xsep=10,
+        pic me={pic {#2}},
+      }
+    }
+  },
+  pic me set={directory}{folder},
+  pic me set={file}{file},
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stuff for table of contents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetikzlibrary{positioning}
+\usetikzlibrary{tikzmark}
+\tikzset{
+  section number/.style={
+    draw=none,
+    rectangle,    
+    left color=nordZero,
+    right color=nordZero,
+    minimum size=1.5em,
+    text=white,
+  },
+  section/.style={
+    draw=none,
+    rectangle,    
+    % shading=section shading,
+    minimum height=1.5em,
+    minimum width=0.9\textwidth,
+    text width=0.9\textwidth,
+    text=black,
+    align=left
+  },
+  subsection number/.style={
+    draw=none,
+    rectangle,    
+    left color=nordTwo,
+    right color=nordTwo,
+    minimum size=0.5em,
+    text=white,
+  },
+  subsection/.style={
+    draw=none,
+    rectangle,    
+    % shading=subsection shading,
+    minimum height=1.5em,
+    minimum width=0.939\textwidth,
+    text width=0.939\textwidth,
+    text=black,
+    align=left
+  }
+}
+
+\setbeamertemplate{section in toc}{
+    \tikz[baseline=-0.5ex]\node[section number]{\,\inserttocsectionnumber};%
+  \,%
+  \tikz[baseline=-0.5ex]\node[section]{\inserttocsection};
+}
+\setbeamertemplate{subsection in toc}{
+\tikz[baseline=-0.5ex]\node[subsection number]{};%
+  \,%
+  \tikz[baseline=-0.5ex]\node[subsection]{\textcolor{Bittersweet}{\inserttocsubsection}};
+}
+% \defbeamertemplate{subsubsection in toc}{subsubsections numbered}
+% {\leavevmode\leftskip=3em%
+%  \rlap{}%
+%  \inserttocsubsubsection\par}
+
+% \setbeamertemplate{subsubsection in toc}[subsubsections numbered]
+\setbeamertemplate{subsubsection in toc}{
+\tikz[baseline=-0.5ex]\node[subsubsection number]{};%
+  \,%
+  \tikz[baseline=-0.5ex]\node[subsubsection]{\tiny \textcolor{MidnightBlue}{$-$\,\inserttocsubsubsection}};
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% href stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\urllink}[2]{\href{#1}{\bf\textit{\cnordEleven{\uline{#2}}}}}
+
+\newcommand{\myemail}[2]{\href{#1}{\cnordTwelve{{\scriptsize\faEnvelope[regular]~}\uline{#2}}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% listing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tcbuselibrary{listings, minted, skins}
+\tcbset{listing engine=minted}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% sec, secsec, secsecsec
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\myhrulefill{\cnordTen{\hrulefill}}
+\newcommand\myhrulefillred{\cnordEleven{\hrulefill}}
+% Configure style for custom doubled line
+\newcommand*{\doublerule}{\hrule width \hsize height 1pt \kern 0.5mm \hrule width \hsize height 2pt}
+
+% Configure function to fill line with doubled line
+\newcommand\doublerulefill{\leavevmode\leaders\vbox{\hrule width .1pt\kern1pt\hrule}\hfill\kern0pt }
+
+% \newcommand{\mydisclaimer}{\cnordTwelve{Disclaimer}}
+\renewcommand\sec{{\cnordSix{\Raleway{\secname}}}\hfill\cnordSix{\myVersion}~~}
+\newcommand\secCode{{\cnordSix{\Raleway{\secname}}\hfill\codeprovided}~\cnordSix{\myVersion}~}
+\newcommand\secDebug{{\cnordSix{\Raleway{\secname}}\hfill\debugProvided}~\cnordSix{\myVersion}~}
+
+\newcommand\secsec{\cnordSix{\Raleway{\secname}}~\sectionColor{\small\faChevronRight}~{\cnordFive{\small\Raleway{\subsecname}}}\hfill\cnordSix{\myVersion}~~}
+\newcommand\secsecCode{\cnordSix{\Raleway{\secname}}~\sectionColor{\small\faChevronRight}~{\cnordFive{\small\Raleway{\subsecname}}\hfill\codeprovided}~\cnordSix{\myVersion}~}
+
+
+\newcommand\secsecsec{\cnordSix{\Raleway{\secname}}~\sectionColor{\small\faChevronRight}~{\cnordFive{\small\Raleway{\subsecname}}}~\subsectionColor{\footnotesize\faChevronRight}~{\cnordFour{\footnotesize\Raleway{\subsubsecname}}}\hfill\cnordSix{\myVersion}~~}
+
+\newcommand\secsecsecCode{\cnordSix{\Raleway{\secname}}~\sectionColor{\small\faChevronRight}~{\cnordFive{\small\Raleway{\subsecname}}}~\subsectionColor{\footnotesize\faChevronRight}~{\cnordFour{\footnotesize\Raleway{\subsubsecname}}\hfill\codeprovided}~\cnordSix{\myVersion}~}
+
+\newcommand\secsecsecDebug{\cnordSix{\Raleway{\secname}}~\sectionColor{\small\faChevronRight}~{\cnordFive{\small\Raleway{\subsecname}}}~\subsectionColor{\footnotesize\faChevronRight}~{\cnordFour{\footnotesize\Raleway{\subsubsecname}}\hfill\debugProvided}~\cnordSix{\myVersion}~}
+
+\newcommand\secsecsecsec[1]{\cnordSix{\secname}~\sectionColor{\small\faChevronRight}~{\cnordFive{\small\subsecname}}~\subsectionColor{\footnotesize\faChevronRight}~{\cnordFour{\footnotesize\subsubsecname}}~\subsubsectionColor{\scriptsize\faChevronRight}~{\cnordFour{\scriptsize #1}}\hfill\cnordSix{\myVersion}~~}
+
+
+\newcommand\secsecsecsecCode[1]{\cnordSix{\secname}~\sectionColor{\small\faChevronRight}~{\cnordFive{\small\subsecname}}~\subsectionColor{\footnotesize\faChevronRight}~{\cnordFour{\footnotesize\subsubsecname}}~\subsubsectionColor{\scriptsize\faChevronRight}~{\cnordFour{\scriptsize #1}\hfill\codeprovided}~\cnordSix{\myVersion}~}
+
+\newcommand\secsecsecsecDebug[1]{\cnordSix{\secname}~\sectionColor{\small\faChevronRight}~{\cnordFive{\small\subsecname}}~\subsectionColor{\footnotesize\faChevronRight}~{\cnordFour{\footnotesize\subsubsecname}}~\subsubsectionColor{\scriptsize\faChevronRight}~{\cnordFour{\scriptsize #1}\hfill\codeprovided}~\cnordSix{\myVersion}~}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\myDefinitionIcon}{\iconColor{\faScroll}\xspace}
+% \newcommandx{\myDefinitionHeader}[3][1=12pt, 2=12pt]{{\fontsize{#1}{#2}\selectfont \myDefinitionIcon #3} \doublerulefill}
+
+% \newcommand{\myDefinitionHeader}[3][12pt]{\fontsize{#2}{#1}\selectfont #3}
+
+
+% \newcommand\secsecsec{{\color{darkgray}{\normalsize{\secname}} \textcolor{Tomato3}{|}{{\color{darkgray!90}{\small\subsecname}}}\textcolor{Tomato3}{|}{\color{darkgray!70}{\footnotesize\subsubsecname}}\myhrulefill}}
+
+
+
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% C++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\CC{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}\xspace}
+
+
+\def\CCNINETYEIGHT{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++98}}\xspace}
+\def\CNINETYNINE{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf 99}}\xspace}
+\def\CCZEROTHREE{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++03}}\xspace}
+% \def\CCELEVEN{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++11}}\xspace}
+\def\CCFOURTEEN{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++14}}\xspace}
+% \def\CCSEVENTEEN{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++17}}\xspace}
+% \def\CPPXVII{\textcolor{black}{{\bf C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++\textcolor{black}{17}}}\xspace}}
+
+\newcommand{\mintcpp}{\mintinline[escapeinside=@@, fontfamily=MyCodeFontFamily]{cpp}}
+\newcommand{\mintpy}{\mintinline[ fontfamily=MyCodeFontFamily]{python}}
+\newcommand{\mintcmake}{\mintinline[ fontfamily=MyCodeFontFamily]{cmake}}
+\newcommand{\minttext}{\mintinline[ fontfamily=MyCodeFontFamily]{text}}
+\newcommand{\mintbash}{\mintinline[escapeinside=@@, fontfamily=MyCodeFontFamily]{bash}}
+\newcommand{\mintidl}{\mintinline[escapeinside=@@, fontfamily=MyCodeFontFamily]{idl}}
+\newcommand{\mintxml}{\mintinline[fontfamily=MyCodeFontFamily]{xml}}
+
+\def\CPPXI{$\mathrm{\mathbf{C_{{\scriptscriptstyle 11}}^{\scriptscriptstyle ++}}}$\xspace}
+\def\CPPXVII{$\mathrm{\mathbf{C_{{\scriptscriptstyle 17}}^{\scriptscriptstyle ++}}}$\xspace}
+\def\CPPXIV{$\mathrm{\mathbf{C_{{\scriptscriptstyle 14}}^{\scriptscriptstyle ++}}}$\xspace}
+\def\myCARRAY{$\mathrm{\mathbf{array_{{}}^{\scriptscriptstyle C}}}$\xspace}
+\def\myCCARRAY{$\mathrm{\mathbf{array_{{\scriptscriptstyle ++}}^{\scriptscriptstyle \textbf{C}}}}$\xspace}
+\def\myCSTRING{$\mathrm{\mintcpp{string}^{\scriptscriptstyle \textcolor{BrickRed}{\textbf{C}}}}$\xspace}
+
+% \def\myCCSTRING{$\mathrm{\mintcpp{string}^{\scriptscriptstyle \textcolor{BrickRed}{\textbf{++}}}}$\xspace}
+
+\def\myCCSTRING{$\mathrm{\mathcal{C}_{\scriptscriptstyle string}^{\scriptscriptstyle \mathsf{\textcolor{BrickRed}{++}}}}$\xspace}
+\def\myCCSTRINGSECTION{$\mathrm{\mathcal{C}_{\scriptscriptstyle string}^{\scriptscriptstyle \mathsf{++}}}$\xspace}
+\def\myCSTRING{$\mathrm{\mathcal{C}_{\scriptscriptstyle string}}$\xspace}
+\def\myCSTRINGSECTION{$\mathrm{\mathcal{C}_{\scriptscriptstyle string}}$\xspace}
+% ARRAYS
+\def\myCARRAY{$\mathrm{\mathcal{C}_{\scriptscriptstyle array}}$\xspace}
+\def\myCCARRAY{$\mathrm{\mathcal{C}_{\scriptscriptstyle array}^{\scriptscriptstyle \mathsf{\textcolor{BrickRed}{++}}}}$\xspace}
+
+\def\CCTWENTY{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++20}}\xspace}
+\def\CCXXIII{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++23}}\xspace}
+\def\SALARY{{Salary\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}\xspace}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%% BASH
+
+
+\newtcblisting{bashlisting}[2][]{
+    listing only,
+    minted language=bash,
+    minted style=tango,
+    colback=white,
+    enhanced,
+    frame hidden,
+    boxsep=0pt,
+    top=-2.5mm,
+    bottom=-2.5mm,
+    left=-1mm,
+    right=-1mm,
+    nobeforeafter,
+    minted options={
+    highlightcolor=nordFourteen!30,
+        fontfamily=MyCodeFontFamily,
+        bgcolor=white,
+        numbersep=2pt,
+        fontsize=#2,  % Font size is now passed as a second parameter
+        tabsize=1,
+        frame=leftline,
+        escapeinside=@@,
+        rulecolor=OrangeRed,
+        framerule=2pt,
+        breaklines,
+        autogobble,
+        #1 % This will pass the provided minted options directly
+    }
+}
+
+
+\newtcblisting{cpplisting}[2][]{
+    listing only,
+    minted language=cpp,
+    minted style=tango,
+    colback=white,
+    enhanced,
+    frame hidden,
+    boxsep=0pt,
+    top=-2.5mm,
+    bottom=-2.5mm,
+    left=-1mm,
+    right=-1mm,
+    nobeforeafter,
+    minted options={
+    highlightcolor=nordFourteen!30,
+        fontfamily=MyCodeFontFamily,
+        bgcolor=white,
+        numbersep=2pt,
+        fontsize=#2,  % Font size is now passed as a second parameter
+        tabsize=1,
+        frame=leftline,
+        escapeinside=@@,
+        rulecolor=OrangeRed,
+        framerule=2pt,
+        breaklines,
+        autogobble,
+        #1 % This will pass the provided minted options directly
+    }
+}
+
+
+\newtcblisting{idllisting}[2][]{
+    listing only,
+    minted language=idl,
+    minted style=tango,
+    colback=white,
+    enhanced,
+    frame hidden,
+    boxsep=0pt,
+    top=-2.5mm,
+    bottom=-2.5mm,
+    left=-1mm,
+    right=-1mm,
+    nobeforeafter,
+    minted options={
+    highlightcolor=nordFourteen!30,
+        fontfamily=MyCodeFontFamily,
+        bgcolor=white,
+        numbersep=2pt,
+        fontsize=#2,  % Font size is now passed as a second parameter
+        tabsize=1,
+        frame=leftline,
+        escapeinside=@@,
+        rulecolor=OrangeRed,
+        framerule=2pt,
+        breaklines,
+        autogobble,
+        #1 % This will pass the provided minted options directly
+    }
+}
+
+\newtcblisting{bashFoot}[1][]{
+    listing only,
+    minted language=bash,
+    minted style=tango,
+    colback=white,
+    enhanced,
+    frame hidden,
+    boxsep=0pt,
+    top=-2.5mm,
+    bottom=-2.5mm,
+    left=-1mm,
+    right=-1mm,
+    nobeforeafter,
+    minted options={
+    highlightcolor=nordFourteen!30,
+        fontfamily=MyCodeFontFamily,
+        bgcolor=white,
+        numbersep=2pt,
+        fontsize=\footnotesize,
+        tabsize=1,
+        frame=leftline,
+        escapeinside=@@,
+        rulecolor=OrangeRed,
+        framerule=2pt,
+        breaklines,
+        autogobble,
+        #1 % This will pass the provided minted options directly
+    }
+}
+
+\newtcblisting{bashWhiteFoot}[1][]{
+    listing only,
+    minted language=console,
+    minted style=tango,
+    colback=white,
+    enhanced,
+    frame hidden,
+    boxsep=0pt,
+    top=-2.5mm,
+    bottom=-2.5mm,
+    left=-1mm,
+    right=-1mm,
+    nobeforeafter,
+    minted options={
+    highlightcolor=nordFourteen!30,
+        fontfamily=MyCodeFontFamily,
+        bgcolor=white,
+        numbersep=2pt,
+        fontsize=\footnotesize,
+        tabsize=1,
+        frame=leftline,
+        escapeinside=@@,
+        rulecolor=RubineRed,
+        framerule=2pt,
+        breaklines,
+        autogobble,
+        #1 % This will pass the provided minted options directly
+    }
+}
+
+
+\newtcblisting{consoleFoot}[1][]{
+    listing only,
+    minted language=console,
+    minted style=tango,
+    colback=white,
+    enhanced,
+    frame hidden,
+    boxsep=0pt,
+    top=-2.5mm,
+    bottom=-2.5mm,
+    left=-1mm,
+    right=-1mm,
+    nobeforeafter,
+    minted options={
+    highlightcolor=nordFourteen!30,
+        fontfamily=MyCodeFontFamily,
+        bgcolor=white,
+        numbersep=2pt,
+        fontsize=\footnotesize,
+        tabsize=1,
+        frame=leftline,
+        escapeinside=@@,
+        rulecolor=RubineRed,
+        framerule=2pt,
+        breaklines,
+        autogobble,
+        #1 % This will pass the provided minted options directly
+    }
+}
+
+\newtcblisting{pylisting}[2][]{
+    listing only,
+    minted language=python,
+    minted style=tango,
+    colback=white,
+    enhanced,
+    frame hidden,
+    boxsep=0pt,
+    top=-2.5mm,
+    bottom=-2.5mm,
+    left=-1mm,
+    right=-1mm,
+    nobeforeafter,
+    minted options={
+    highlightcolor=nordFourteen!30,
+        fontfamily=MyCodeFontFamily,
+        bgcolor=white,
+        numbersep=2pt,
+        fontsize=#2,  % Font size is now passed as a second parameter
+        tabsize=1,
+        frame=leftline,
+        escapeinside=@@,
+        rulecolor=OrangeRed,
+        framerule=2pt,
+        breaklines,
+        autogobble,
+        #1 % This will pass the provided minted options directly
+    }
+}
+
+\newtcblisting{cmakelisting}[2][]{
+    listing only,
+    minted language=cmake,
+    minted style=tango,
+    colback=white,
+    enhanced,
+    frame hidden,
+    boxsep=0pt,
+    top=-2.5mm,
+    bottom=-2.5mm,
+    left=-1mm,
+    right=-1mm,
+    nobeforeafter,
+    minted options={
+    highlightcolor=nordFourteen!30,
+        fontfamily=RobotoMonoFamily,
+        bgcolor=white,
+        numbersep=2pt,
+        fontsize=#2,  % Font size is now passed as a second parameter
+        tabsize=1,
+        frame=leftline,
+        escapeinside=@@,
+        rulecolor=OrangeRed,
+        framerule=2pt,
+        breaklines,
+        autogobble,
+        #1 % This will pass the provided minted options directly
+    }
+}
+
+\newtcblisting{xmllisting}[2][]{
+    listing only,
+    minted language=xml,
+    minted style=tango,
+    colback=white,
+    enhanced,
+    frame hidden,
+    boxsep=0pt,
+    top=-2.5mm,
+    bottom=-2.5mm,
+    left=-1mm,
+    right=-1mm,
+    nobeforeafter,
+    minted options={
+    highlightcolor=nordFourteen!30,
+        fontfamily=RobotoMonoFamily,
+        bgcolor=white,
+        numbersep=2pt,
+        fontsize=#2,  % Font size is now passed as a second parameter
+        tabsize=1,
+        frame=leftline,
+        escapeinside=@@,
+        rulecolor=OrangeRed,
+        framerule=2pt,
+        breaklines,
+        autogobble,
+        #1 % This will pass the provided minted options directly
+    }
+}
+
+\newtcblisting{PythonScriptListing}[1][]{
+    listing only,
+    minted language=python,
+    minted style=tango,
+    colback=white,
+    enhanced,
+    frame hidden,
+    boxsep=0pt,
+    top=-2.5mm,
+    bottom=-2.5mm,
+    left=-1mm,
+    right=-1mm,
+    nobeforeafter,
+    minted options={
+    highlightcolor=nordFourteen!30,
+        fontfamily=MyCodeFontFamily,
+        bgcolor=white,
+        numbersep=2pt,
+        fontsize=\scriptsize,
+        tabsize=1,
+        frame=leftline,
+        escapeinside=@@,
+        rulecolor=OrangeRed,
+        framerule=2pt,
+        breaklines,
+        autogobble,
+        #1 % This will pass the provided minted options directly
+    }
+}
+
+
+\newtcblisting{bashTinyListLine}{
+    listing only, 
+    minted language=bash, 
+    minted style=tango,
+    colback=white, 
+    enhanced, 
+    frame hidden,
+    boxsep=0pt, top=-2.5mm, bottom=-2.5mm, left=-1mm, right=-1mm,
+    nobeforeafter,
+    minted options={
+    fontfamily=RobotoMonoFamily,
+    bgcolor=white,
+    fontsize=\tiny, 
+    tabsize=1, 
+    frame=leftline,
+    escapeinside=||,
+    rulecolor=nordZero,
+    highlightlines={2},
+    highlightcolor = nordThirteen,
+    framerule=2pt,
+    breaklines, 
+    autogobble}
+}
+
+
+
+
+\newtcblisting{bashScriptListLine}{
+    listing only, 
+    minted language=bash, 
+    minted style=tango,
+    colback=white, 
+    enhanced, 
+    frame hidden,
+    boxsep=0pt, top=-2.5mm, bottom=-2.5mm, left=-1mm, right=-1mm,
+    nobeforeafter,
+    minted options={
+    fontfamily=RobotoMonoFamily,
+    bgcolor=white,
+    fontsize=\scriptsize, 
+    tabsize=1, 
+    frame=leftline,
+    escapeinside=||,
+    rulecolor=nordZero,
+    highlightlines={2},
+    highlightcolor = nordThirteen,
+    framerule=2pt,
+    breaklines, 
+    autogobble}
+}
+
+\newtcblisting{bashScriptList}{
+    listing only, 
+    minted language=bash, 
+    minted style=tango,
+    colback=white, 
+    enhanced, 
+    frame hidden,
+    boxsep=0pt, top=-2.5mm, bottom=-2.5mm, left=-1mm, right=-1mm,
+    nobeforeafter,
+    minted options={
+    fontfamily=RobotoMonoFamily,
+    bgcolor=white,
+    fontsize=\scriptsize, 
+    tabsize=1, 
+    frame=leftline,
+    escapeinside=||,
+    rulecolor=nordZero,
+    framerule=2pt,
+    breaklines, 
+    autogobble}
+}
+
+
+
+\newtcblisting{bashscriptsyntax}{
+    listing only, 
+    minted language=bash, 
+    minted style=tango,
+    colback=white, 
+    enhanced, 
+    frame hidden,
+    boxsep=0pt, top=-2.5mm, bottom=-2.5mm, left=-1mm, right=-1mm,
+    nobeforeafter,
+    minted options={
+    fontfamily=RobotoMonoFamily,
+    bgcolor=white,
+    fontsize=\scriptsize, 
+    tabsize=1, 
+    frame=leftline,
+    escapeinside=||,
+    rulecolor=nordEleven,
+    framerule=2pt,
+    breaklines, 
+    autogobble}
+}
+
+
+
+\newtcblisting{bashSmallSyntax}{
+    listing only, 
+    minted language=bash, 
+    minted style=tango,
+    colback=white, 
+    enhanced, 
+    frame hidden,
+    boxsep=0pt, top=-2.5mm, bottom=-2.5mm, left=-1mm, right=-1mm,
+    nobeforeafter,
+    minted options={
+    fontfamily=RobotoMonoFamily,
+    bgcolor=white,
+    fontsize=\small, 
+    tabsize=1, 
+    frame=leftline,
+    escapeinside=||,
+    rulecolor=nordEleven,
+    framerule=2pt,
+    breaklines, 
+    autogobble}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% mynote, mybestpractice, etc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\emph}[1]{\textcolor{nordTwo}{\textbf{\textit{#1}}}}
+\newcommand{\emphTitle}[1]{\textcolor{black}{\Raleway\textsc{#1}}~\textcolor{black}{\doublerulefill}}
+\newcommand{\emphTitleShort}[1]{\textcolor{black}{\Raleway\textsc{#1}}\xspace}
+
+
+\newcommand\mycustom{DeepSkyBlue4}
+\newcommand{\summaryuline}[1]{{\color{black}\uline{#1}}}
+% \newcommand{\mynote}{{\summaryuline{\textsc{\textcolor{\mycustom}{Note}}}}}
+
+
+\newcommand{\mybestpractice}{\faThumbsUp\xspace}
+\newcommand{\myexercise}{\faPaperPlane\xspace}
+\newcommand{\myresource}{\faPaperclip\xspace}
+\newcommand{\mytodo}{\faTasks\xspace}
+\newcommand{\mynote}{\faEdit\xspace}
+\newcommand{\mywarning}[1]{\textcolor{Firebrick2}{\faExclamationTriangle~\textbf{\Raleway{#1}}~\faExclamationTriangle}\xspace}
+\newcommand{\mywarningSingle}[1]{\textcolor{Firebrick2}{\faExclamationTriangle}\xspace}
+\newcommand{\myinfo}{\iconColor{\faInfoCircle}\xspace}
+\newcommand{\myquestion}{\faQuestionCircle\xspace}
+\newcommand{\myreminder}{\faBell\xspace}
+\newcommand{\mydefinition}{\faScroll\xspace}
+\newcommand{\mycodesyntax}{\textcolor{CornflowerBlue}{\faCode~\doublerulefill}\xspace}
+
+\newcommand{\mybadpractice}{\iconWarningColor{\faThumbsDown}\xspace}
+
+
+
+% \definecolor{roscolor}{HTML}{EBCB8B}
+% \definecolor{roscolor}{HTML}{AEBDCA}
+\definecolor{roscolor}{HTML}{EC1143}
+
+\newcommand{\mathredcircled}[1]{%
+  \tikz[baseline=(char.base)]{
+    \node[shape=circle,draw=roscolor,fill=LightGoldenrod1,inner sep=1pt,text=roscolor,font=\scriptsize,anchor=base, line width=1pt] (char) {\RalewayExtraBold #1};
+  }%
+}
+
+
+
+\newcommand{\rosnode}[1]{%
+  \mathredcircled{n}~{\Raleway #1}
+}
+
+\newcommand{\rosmessage}[1]{%
+  \mathredcircled{m}~{\Raleway #1}
+}
+
+\newcommand{\rostopic}[1]{%
+  \mathredcircled{t}~{\Raleway #1}
+}
+
+\newcommand{\rosframe}[1]{%
+  \mathredcircled{f}~{\Raleway #1}
+}
+
+\newcommand{\rosparameter}[1]{%
+  \mathredcircled{p}~{\Raleway #1}
+}
+
+\newcommand{\rosexe}[1]{%
+  \faCog~{\Raleway #1}
+}
+
+\newcommand{\myKeyboardShortcut}[1]{%
+  \faKeyboard~{\Raleway #1}
+}
+
+\newtcbox{\myTerminal}{
+    enhanced,
+    nobeforeafter,
+    tcbox raise base,
+    boxrule=0.5pt,
+    top=0mm,
+    bottom=0mm,
+    right=0mm,
+    left=5mm,
+    arc=1pt,
+    boxsep=1pt, 
+    fontupper=\MyCodeFont,
+    before upper={\vphantom{dlg}},
+    colframe=black,
+    coltext=white,
+    colback=black,
+    overlay={
+    \begin{tcbclipinterior}
+    \fill[white] (frame.south west) rectangle node[text=MidnightBlue,
+    font=\sffamily\tiny,
+    rotate=0] {\faTerminal} ([xshift=4mm]frame.north west);
+    \end{tcbclipinterior}}}
+    
+\newtcbox{\myTerminalBlank}{
+  enhanced,
+  nobeforeafter,
+  tcbox raise base,
+  boxrule=0.5pt,
+  top=0mm,
+  bottom=0mm,
+  right=0mm,
+  left=0mm,
+  arc=1pt,
+  boxsep=1pt,
+  fontupper=\MyCodeFont,
+  before upper={\vphantom{dlg}},
+  colframe=black,
+  coltext=white,
+  colback=black
+}
+    
+% \newtcbox{\myFolder}{
+%   enhanced,
+%   nobeforeafter,
+%   tcbox raise base,
+%   boxrule=0.0pt,
+%   top=0mm,
+%   bottom=0mm,
+%   right=0mm,
+%   left=4mm,
+%   arc=0pt,
+%   boxsep=1pt,
+%   before upper={\vphantom{dlg}},
+%   colframe=white,
+%   coltext=black,
+%   colback=white,
+%   fontupper=\RalewayBold,
+%   overlay={
+%     \begin{tcbclipinterior}
+%       \fill[white] (frame.south west)
+%       rectangle node[text=black,font=\Raleway,rotate=0] {\faFolderOpen} ([xshift=4mm]frame.north west);
+%     \end{tcbclipinterior}
+%   }
+% }
+
+
+\newcommand{\myFolder}[1]{%
+  \faFolderOpen~{\RalewayLight #1}
+}
+
+\newcommand{\myFile}[1]{%
+  \faFile*[regular]~{\RalewayLight #1}
+}
+
+\newcommand{\myGuideline}[1]{%
+  \faRocket~{\Raleway #1}
+}
+
+\newcommand{\myStandard}[1]{%
+  \faBookOpen~{\Raleway #1}
+}
+
+\newcommand{\pythonpackage}[1]{%
+  \faPython~{\Raleway #1}
+}
+\newcommand{\rospackage}[1]{%
+  \faToolbox~{\Raleway #1}
+}
+
+\newcommand{\githubbranch}[1]{%
+  \faGit*~{\Raleway #1}
+}
+
+
+% \newtcbox{\myFile}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.0pt,top=0mm,bottom=0mm,
+%   right=0mm,left=4mm,arc=0pt,boxsep=1pt,before upper={\vphantom{dlg}},
+%   colframe=white,coltext=black,colback=white, fontupper=\RalewayBold, 
+%   overlay={\begin{tcbclipinterior}\fill[white] (frame.south west)
+%     rectangle node[text=black,font=\scriptsize,rotate=0] {\faFile*[regular]} ([xshift=4mm, yshift=0.5mm]frame.north west);\end{tcbclipinterior}}}
+
+ % \newtcbox{\myGuideline}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.0pt,top=0mm,bottom=0mm,
+ %  right=0mm,left=4mm,arc=0pt,boxsep=1pt,before upper={\vphantom{dlg}},
+ %  colframe=white,coltext=black,colback=white, fontupper=\RalewayBold,
+ %  overlay={\begin{tcbclipinterior}\fill[Cerulean] (frame.south west)
+ %    rectangle node[text=white,font=\sffamily\bfseries\tiny,rotate=0] {\faRocket} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}
+
+ % \newtcbox{\myStandard}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.0pt,top=0mm,bottom=0mm,
+ %  right=0mm,left=4mm,arc=0pt,boxsep=1pt,before upper={\vphantom{dlg}},
+ %  colframe=white,coltext=black,colback=white, fontupper=\RalewayBold,
+ %  overlay={\begin{tcbclipinterior}\fill[DarkOrange] (frame.south west)
+ %    rectangle node[text=white,font=\sffamily\bfseries\tiny,rotate=0] {\faBookOpen} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}
+    
+\newtcbox{\myTool}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.5pt,top=0mm,bottom=0mm,
+  right=0mm,left=6mm,arc=1pt,boxsep=1pt, before upper={\vphantom{dlg}},
+  colframe=nordZero,coltext=nordZero,colback=white,
+  overlay={\begin{tcbclipinterior}\fill[nordZero] (frame.south west)
+    rectangle node[text=white,font=\sffamily\bfseries\tiny,rotate=0] {\faTools} ([xshift=6mm]frame.north west);\end{tcbclipinterior}}}
+
+
+\newcommand{\myemphII}[1]{{\textbf{\textcolor{Tomato}{{#1\xspace}}}}}
+\newcommand{\myemphIII}[1]{{\textbf{\textit{\textcolor{MediumVioletRed}{{#1\xspace}}}}}}
+\newcommand{\emphIII}[1]{{\textbf{\textit{\textcolor{MediumVioletRed}{{#1\xspace}}}}}}
+\newcommand{\emphII}[1]{{\textbf{\textit{\textcolor{CornflowerBlue}{{#1\xspace}}}}}}
+\newcommand{\emphI}[1]{{\textbf{\textit{\iconWarningColor{{#1\xspace}}}}}}
+\newcommand{\emphIV}[1]{{\textbf{\textit{\textcolor{DarkOrange}{{#1\xspace}}}}}}
+\newcommand{\emphV}[1]{{\textbf{\textit{\textcolor{Cornsilk4}{{#1\xspace}}}}}}
+\newcommand{\emphHide}[1]{{\textcolor{Ivory3}{{#1\xspace}}}}
+
+
+% > > >	Image File Paths
+% 		Here you can add one or more paths to where your images are being
+%		stored.  This will allow you to include only the image file 
+%		name when placing it into your document.
+%\graphicspath{{path1},{path2},{path3}}
+\graphicspath{{./assets/}, {./figures/}} 
+% > > >	Optional use of using subfiles to make content more modular
+\usepackage{subfiles}
+\usepackage{twoopt}
+\usepackage{xargs}
+
+% > > > Document Information
+\title[ENPM605~|~Reading Material: Program Flow Control]{Python Applications for Robotics}
+\subtitle{Reading Material: Program Flow Control\\Version 1.0}
+\newcommand{\titleAuthor}{Lecturer}
+\author{Z. Kootbally}
+\newcommand{\titleInstitute}{School}
+\institute{University of Maryland}
+\newcommand{\titleMiscI}{Semester/Year}
+\newcommand{\descMiscI}{Spring/2024}
+% \newcommand{\titleMiscII}{File}
+% \newcommand{\descMiscII}{\currfilebase}
+% \date{\today}
+\titlegraphic{mage-logo.png}
+
+% > > > pdf customizations via hyperref (pkg installed by beamer)
+\hypersetup{
+%colorlinks=true,
+% You might want to disable color links for you final draft 
+% AND for colors to work properly where links are involved.
+colorlinks=false,
+linkcolor={citationcolor},
+citecolor={citationcolor},
+urlcolor={citationcolor}
+}
+
+
+% \usepackage{xpatch}
+% \makeatletter
+% % replace executable python with python3
+% \xpatchcmd\minted@pygmentize
+%   {python -c}
+%   {python3 -c}
+%   {}{\fail}
+% \xpatchcmd\minted@autogobble
+%   {python -c}
+%   {python3 -c}
+%   {}{\fail}
+% \makeatother
+
+\crefname{page}{page}{pages}
+\Crefname{page}{Page}{Pages}
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%    DOCUMENT BEGINS HERE 
+%
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\usepackage{media9}
+\usepackage{xpatch}
+
+\xpatchcmd{\mintinline}{\begingroup}{\begingroup\let\itshape\relax}{}{}
+\xpatchcmd{\minted}{\VerbatimEnvironment}{\VerbatimEnvironment\let\itshape\relax}{}{}
+
+
+\newcommand{\mobilerobot}{\textbf{\textcolor{DodgerBlue1}{RWA2::MobileRobot}}}
+\newcommand{\wheeledrobot}{\textbf{\textcolor{BurntOrange}{RWA2::WheeledRobot}}}
+\newcommand{\leggedrobot}{\textbf{\textcolor{WildStrawberry}{RWA2::LeggedRobot}}}
+\newcommand{\aerialrobot}{\textbf{\textcolor{SeaGreen}{RWA2::AerialRobot}}}
+\newcommand{\pub}{\mintcpp{public}\xspace}
+\newcommand{\pro}{\mintcpp{protected}\xspace}
+\newcommand{\pri}{\mintcpp{private}\xspace}
+\begin{document}
+
+\titlepage%
+% \subfile{0-slides/tex.slide.sthmlNordCover}
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   TABLE OF CONTENTS START   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+% \begin{frame}
+% 	\frametitle{Table of contents}
+% 	% > > > For longer presentations use \tableofcontents[hideallsubsections] option
+% 	%		It is also possible to manually control the entries of the table of
+% 	% 		contents by sections.
+% 	%\tableofcontents[sections={1-10}]
+% 	%\framebreak
+% 	%\tableofcontents[sections={11-15}]
+% 	\tableofcontents
+% \end{frame}
+
+
+
+\section*{Overview}
+\begin{frame}[fragile]{\sec}
+\begin{center}
+\begin{multicols}{2}
+\scriptsize
+\tableofcontents
+\end{multicols}
+\end{center}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Changelog}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{\sec}
+\vspace*{\fill}
+\begin{center} 
+
+\begin{compactitem}
+\item v1.0~(02/13): Original version.
+\end{compactitem}
+\end{center}
+\vspace*{\fill}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Conventions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%#=============================
+\begin{frame}[fragile]{\sec}
+% \begin{columns}[t]
+
+% \begin{column}{0.5\textwidth}
+% % Content of the first column
+\faGripHorizontal~\emphTitle{Conventions}
+
+\begin{compactitem}
+\small
+\item \urllink{ros.org}{link}
+\item \myFolder{folder}
+\item\myKeyboardShortcut{keyboard shortcut}
+\item \myFile{file}
+\item \mydefinition terminology
+\item \mynote note
+% \item[] \myquestion question
+% \item[] \myreminder reminder
+\item \mytodo task to do
+\item \myresource resource
+\item \myexercise exercise
+\item \mybestpractice best practice
+\end{compactitem}
+% \end{column}
+
+% \begin{column}{0.5\textwidth}
+% % Content of the second column
+% \faGripHorizontal~\emphTitle{ROS}
+
+
+% \begin{compactitem}
+% \small
+%     \item\rospackage{ROS package}
+%     \item\pythonpackage{Python package}
+%     \item\rosexe{ROS executable}
+%     \item\rosnode{node}
+%     \item\rostopic{topic}
+%     \item\rosmessage{message}
+    
+% \end{compactitem}
+% \end{column}
+
+% \end{columns}
+\end{frame}
+
+
+
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\section{Program Flow Control}
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\begin{frame}[fragile]{\sec}
+\vspace*{\fill}
+% \begin{center} 
+
+\small
+\mydefinition~\emphTitle{Program Flow Control}
+
+Program flow control in programming refers to the direction in which the instructions in a program are executed. Unlike a linear program that executes instructions one after another from top to bottom, flow control allows a program to make decisions, repeat operations, and execute code blocks conditionally based on certain criteria or events. 
+
+This makes programs dynamic and able to respond differently under varying conditions. 
+
+\hrulefill
+
+Python, like many other programming languages, uses several constructs to control the flow of execution:
+
+\begin{compactitem}
+\small
+    \item \emph{Conditional Statements} -- These are used to execute a block of code only if a specified condition is true. 
+    \item \emph{Iteration Statements} -- Loops are used to repeatedly execute a block of code as long as a specified condition remains true. 
+    \item \emph{Iteration Control Statements} -- These statements alter the execution from its normal sequence. 
+    \item \emph{Exception Handling} -- Python uses try-except blocks to handle exceptions or errors that occur during the execution of a program. This allows the program to respond to errors and continue running or provide a more informative error message.
+\end{compactitem}
+% \end{center}
+\vspace*{\fill}
+\end{frame}
+
+
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\section{Conditional Statements}
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\begin{frame}[fragile]{\sec}
+\vspace*{\fill}
+
+\mydefinition~\emphTitle{Conditional Statements}
+
+Python uses \mintpy{if}, \mintpy{elif} (\mintpy{else} \mintpy{if}), and \mintpy{else} statements for conditional execution.
+
+\begin{compactitem}
+    \item \mintpy{if} Statement -- Executes a block of code if a specified condition is true.
+    \item \mintpy{elif}  Statement -- Checks another condition if the previous conditions were false.
+    \item \mintpy{else} Statement -- Executes a block of code if none of the preceding conditions are true.
+\end{compactitem}
+\vspace*{\fill}
+\end{frame}
+
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\subsection{if Statement}
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\begin{frame}[fragile]{\secsecCode}
+\vspace*{\fill}
+
+\faGripHorizontal~\mintpy{if}~\emphTitle{Statement}
+
+The \mintpy{if} statement is used to test a condition and execute a block of code if the condition is true.
+
+\begin{pylisting}[]{}
+x = 10
+if x > 5:
+    print("x is greater than 5")
+\end{pylisting}
+
+In this example, the \mintpy{print} statement will execute because the condition \mintpy{(x > 5)} is true.
+\vspace*{\fill}
+\end{frame}
+
+
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\subsection{elif Statement}
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\begin{frame}[fragile]{\secsecCode}
+\vspace*{\fill}
+
+\faGripHorizontal~\mintpy{elif}~\emphTitle{Statement}
+
+The \mintpy{elif} allows you to check multiple expressions for True and execute a block of code as soon as one of the conditions evaluates to True. It is used to include multiple conditional expressions after an initial if statement.
+
+\begin{pylisting}[]{}
+x = 10
+if x > 15:
+    print("x is greater than 15")
+elif x > 5:
+    print("x is greater than 5 but not greater than 15")
+\end{pylisting}
+
+Here, the first condition \mintpy{x > 15} is false, so the program checks the next condition. Since \mintpy{x > 5} is true, it prints \mintpy{"x is greater than 5 but not greater than 15"}.
+\vspace*{\fill}
+\end{frame}
+
+
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\subsection{else Statement}
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\begin{frame}[fragile]{\secsecCode}
+\vspace*{\fill}
+
+\faGripHorizontal~\mintpy{else}~\emphTitle{Statement}
+
+The \mintpy{else} statement catches anything which isn't caught by the preceding conditions. There can be at most one \mintpy{else} statement following an \mintpy{if}.
+
+\begin{pylisting}[]{}
+x = 3
+if x > 5:
+    print("x is greater than 5")
+else:
+    print("x is 5 or less")
+\end{pylisting}
+
+Since \mintpy{x > 5} is false, the \mintpy{else} block executes, printing \mintpy{"x is 5 or less"}.
+\vspace*{\fill}
+\end{frame}
+
+\subsection{if, else, and elif Statements}
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\begin{frame}[fragile]{\secsecCode}
+\vspace*{\fill}
+
+\faGripHorizontal~\mintpy{if}, \mintpy{else}, and \mintpy{elif}~\emphTitle{Statements}
+
+You can combine these statements to create complex conditional logic.
+
+\begin{pylisting}[]{}
+x = 20
+if x > 15:
+    print("x is greater than 15")
+elif x > 10:
+    print("x is greater than 10 but not greater than 15")
+else:
+    print("x is 10 or less")
+\end{pylisting}
+
+This code checks multiple conditions in order. Since \mintpy{x > 15} is true, it prints \mintpy{"x is greater than 15"} and skips the rest of the conditions.
+\vspace*{\fill}
+\end{frame}
+
+
+\subsection{Nested if Statements}
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\begin{frame}[fragile]{\secsecCode}
+\vspace*{\fill}
+
+\faGripHorizontal~\emphTitleShort{Nested}~\mintpy{if}~\emphTitle{Statements}
+
+You can nest \mintpy{if} statements inside other if statements to create more specific conditions.
+
+\begin{pylisting}[]{}
+x = 5
+if x > 3:
+    print("x is greater than 3")
+    if x >= 5:
+        print("x is also at least 5")
+    else:
+        print("x is less than 5")
+\end{pylisting}
+
+This will print \mintpy{"x is greater than 3"} followed by \mintpy{"x is also at least 5"} because both conditions are true.
+\vspace*{\fill}
+\end{frame}
+
+\subsection{Boolean Logic}
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\begin{frame}[fragile]{\secsecCode}
+\vspace*{\fill}
+
+\faGripHorizontal~\emphTitle{Boolean Logic}
+
+You can use Boolean logic (\mintpy{and}, \mintpy{or}, \mintpy{not}) in your conditional statements to combine conditions.
+
+\begin{pylisting}[]{}
+x = 7
+if x > 5 and x < 10:
+    print("x is greater than 5 and less than 10")
+
+if not x == 7:
+    print("x is not equal to 7")
+else:
+    print("x is equal to 7")
+\end{pylisting}
+
+This checks if \mintpy{x} is between 5 and 10 and then whether \mintpy{x} is not equal to 7. Since \mintpy{x} is 7, it prints \mintpy{"x is greater than 5 and less than 10"} and \mintpy{"x is equal to 7"}.
+\vspace*{\fill}
+\end{frame}
+
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\section{Iteration Statements}
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\begin{frame}[fragile]{\sec}
+\vspace*{\fill}
+
+\mydefinition~\emphTitle{Iteration Statements}
+
+Iteration statements (or loops) in Python are used to repeatedly execute a block of code as long as a certain condition is met, making them essential for tasks that require repetition. Python provides two primary types of loops: \mintpy{for} loops and \mintpy{while} loops.
+
+\vspace*{\fill}
+\end{frame}
+
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\subsection{for Loops}
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\begin{frame}[fragile]{\secsecCode}
+\vspace*{\fill}
+
+\mydefinition~\mintpy{for}~\emphTitle{Loops}
+
+A for loop in Python is used to iterate over a sequence (such as a list, tuple, dictionary, set, or string) or other iterable objects. Iterating over a sequence means going through each item in the sequence. The syntax of a for loop is:
+
+\vspace*{\fill}
+\end{frame}
+
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\subsection{while Loops}
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\begin{frame}[fragile]{\secsecCode}
+\vspace*{\fill}
+
+\mydefinition~\mintpy{while}~\emphTitle{Loops}
+
+\vspace*{\fill}
+\end{frame}
+
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\subsection{Loop Control Statement}
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\begin{frame}[fragile]{\secsec}
+\vspace*{\fill}
+
+\mydefinition~\emphTitle{Loop Control Statement}
+
+\vspace*{\fill}
+\end{frame}
+
+
+% %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+% \section{Iteration Control Statements}
+% %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+% \begin{frame}[fragile]{\sec}
+% \vspace*{\fill}
+
+% \vspace*{\fill}
+% \end{frame}
+
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\section{Exception Handling}
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\begin{frame}[fragile]{\sec}
+\vspace*{\fill}
+
+\vspace*{\fill}
+\end{frame}
+
+
+
+
+\end{document}
