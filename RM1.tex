@@ -9,7 +9,7 @@
 \usepackage{booktabs} % For \toprule, \midrule, and \bottomrule
 % \usepackage[table]{xcolor} % Required for \rowcolor
 \usepackage{multirow} % Required for \multirow
-\usepackage[normalem]{ulem}                 % \uline
+\usepackage[normalem]{ulem} % \uline
 \usepackage{multicol}
 \usepackage{colortbl}
 \usepackage{tikz}
@@ -123,39 +123,9 @@
     Numbers = {OldStyle},
     Ligatures=Required
     ]
-% \newfontfamily\monaco{Arial}[NFSSFamily=ArialFamily]
-% \setminted[matlab]{fontfamily=ArialFamily}
-
-% \newfontfamily{\raleway}{Raleway}[
-%     Path=./fonts/raleway/,
-%     Extension = .ttf,
-%     UprightFont = *-Medium,
-%     BoldFont = *-Bold,
-%     BoldItalicFont = *-BoldItalic,
-%     ItalicFont = *-Italic
-%     ]
 
 \newcommand{\myVersion}{\Raleway{v1.0}}
     
-    
-    
-% \newfontfamily{\ralewayII}{Raleway}[
-%     Path=./fonts/raleway/,
-%     Extension = .ttf,
-%     UprightFont = *-Light,
-%     BoldFont = *-SemiBold,
-%     BoldItalicFont = *-SemiBoldItalic,
-%     ItalicFont = *-LightItalic
-%     ]
-
-% \newfontfamily{\ralewayIII}{Raleway}[
-%     Path=./fonts/raleway/,
-%     Extension = .ttf,
-%     UprightFont = *-Thin,
-%     BoldFont = *-Bold,
-%     BoldItalicFont = *-BoldItalic,
-%     ItalicFont = *-Italic
-%     ]
     
 
 
@@ -1179,12 +1149,12 @@ urlcolor={citationcolor}
 
 \section*{Overview}
 \begin{frame}[fragile]{\sec}
-\begin{center}
-\begin{multicols}{2}
-\scriptsize
-\tableofcontents
-\end{multicols}
-\end{center}
+	\begin{center}
+		\begin{multicols}{2}
+			\scriptsize
+			\tableofcontents
+		\end{multicols}
+	\end{center}
 \end{frame}
 
 
@@ -1193,14 +1163,14 @@ urlcolor={citationcolor}
 \section*{Changelog}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]{\sec}
-\vspace*{\fill}
-\begin{center} 
+	\vspace*{\fill}
+	\begin{center}
 
-\begin{compactitem}
-\item v1.0~(02/13): Original version.
-\end{compactitem}
-\end{center}
-\vspace*{\fill}
+		\begin{compactitem}
+			\item v1.0~(02/13): Original version.
+		\end{compactitem}
+	\end{center}
+	\vspace*{\fill}
 \end{frame}
 
 
@@ -1210,47 +1180,47 @@ urlcolor={citationcolor}
 
 %#=============================
 \begin{frame}[fragile]{\sec}
-% \begin{columns}[t]
+	% \begin{columns}[t]
 
-% \begin{column}{0.5\textwidth}
-% % Content of the first column
-\faGripHorizontal~\emphTitle{Conventions}
+	% \begin{column}{0.5\textwidth}
+	% % Content of the first column
+	\faGripHorizontal~\emphTitle{Conventions}
 
-\begin{compactitem}
-\small
-\item \urllink{ros.org}{link}
-\item \myFolder{folder}
-\item\myKeyboardShortcut{keyboard shortcut}
-\item \myFile{file}
-\item \mydefinition terminology
-\item \mynote note
-% \item[] \myquestion question
-% \item[] \myreminder reminder
-\item \mytodo task to do
-\item \myresource resource
-\item \myexercise exercise
-\item \mybestpractice best practice
-\end{compactitem}
-% \end{column}
+	\begin{compactitem}
+		\small
+		\item \urllink{ros.org}{link}
+		\item \myFolder{folder}
+		\item\myKeyboardShortcut{keyboard shortcut}
+		\item \myFile{file}
+		\item \mydefinition terminology
+		\item \mynote note
+		% \item[] \myquestion question
+		% \item[] \myreminder reminder
+		\item \mytodo task to do
+		\item \myresource resource
+		\item \myexercise exercise
+		\item \mybestpractice best practice
+	\end{compactitem}
+	% \end{column}
 
-% \begin{column}{0.5\textwidth}
-% % Content of the second column
-% \faGripHorizontal~\emphTitle{ROS}
+	% \begin{column}{0.5\textwidth}
+	% % Content of the second column
+	% \faGripHorizontal~\emphTitle{ROS}
 
 
-% \begin{compactitem}
-% \small
-%     \item\rospackage{ROS package}
-%     \item\pythonpackage{Python package}
-%     \item\rosexe{ROS executable}
-%     \item\rosnode{node}
-%     \item\rostopic{topic}
-%     \item\rosmessage{message}
-    
-% \end{compactitem}
-% \end{column}
+	% \begin{compactitem}
+	% \small
+	%     \item\rospackage{ROS package}
+	%     \item\pythonpackage{Python package}
+	%     \item\rosexe{ROS executable}
+	%     \item\rosnode{node}
+	%     \item\rostopic{topic}
+	%     \item\rosmessage{message}
 
-% \end{columns}
+	% \end{compactitem}
+	% \end{column}
+
+	% \end{columns}
 \end{frame}
 
 
@@ -1259,29 +1229,29 @@ urlcolor={citationcolor}
 \section{Program Flow Control}
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \begin{frame}[fragile]{\sec}
-\vspace*{\fill}
-% \begin{center} 
+	\vspace*{\fill}
+	% \begin{center} 
 
-\small
-\mydefinition~\emphTitle{Program Flow Control}
+	\small
+	\mydefinition~\emphTitle{Program Flow Control}
 
-Program flow control in programming refers to the direction in which the instructions in a program are executed. Unlike a linear program that executes instructions one after another from top to bottom, flow control allows a program to make decisions, repeat operations, and execute code blocks conditionally based on certain criteria or events. 
+	Program flow control in programming refers to the direction in which the instructions in a program are executed. Unlike a linear program that executes instructions one after another from top to bottom, flow control allows a program to make decisions, repeat operations, and execute code blocks conditionally based on certain criteria or events.
 
-This makes programs dynamic and able to respond differently under varying conditions. 
+	This makes programs dynamic and able to respond differently under varying conditions.
 
-\hrulefill
+	\hrulefill
 
-Python, like many other programming languages, uses several constructs to control the flow of execution:
+	Python, like many other programming languages, uses several constructs to control the flow of execution:
 
-\begin{compactitem}
-\small
-    \item \emph{Conditional Statements} -- These are used to execute a block of code only if a specified condition is true. 
-    \item \emph{Iteration Statements} -- Loops are used to repeatedly execute a block of code as long as a specified condition remains true. 
-    \item \emph{Iteration Control Statements} -- These statements alter the execution from its normal sequence. 
-    \item \emph{Exception Handling} -- Python uses try-except blocks to handle exceptions or errors that occur during the execution of a program. This allows the program to respond to errors and continue running or provide a more informative error message.
-\end{compactitem}
-% \end{center}
-\vspace*{\fill}
+	\begin{compactitem}
+		\small
+		\item \emph{Conditional Statements} -- These are used to execute a block of code only if a specified condition is true.
+		\item \emph{Iteration Statements} -- Loops are used to repeatedly execute a block of code as long as a specified condition remains true.
+		\item \emph{Iteration Control Statements} -- These statements alter the execution from its normal sequence.
+		\item \emph{Exception Handling} -- Python uses try-except blocks to handle exceptions or errors that occur during the execution of a program. This allows the program to respond to errors and continue running or provide a more informative error message.
+	\end{compactitem}
+	% \end{center}
+	\vspace*{\fill}
 \end{frame}
 
 
@@ -1289,38 +1259,38 @@ Python, like many other programming languages, uses several constructs to contro
 \section{Conditional Statements}
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \begin{frame}[fragile]{\sec}
-\vspace*{\fill}
+	\vspace*{\fill}
 
-\mydefinition~\emphTitle{Conditional Statements}
+	\mydefinition~\emphTitle{Conditional Statements}
 
-Python uses \mintpy{if}, \mintpy{elif} (\mintpy{else} \mintpy{if}), and \mintpy{else} statements for conditional execution.
+	Python uses \mintpy{if}, \mintpy{elif} (\mintpy{else} \mintpy{if}), and \mintpy{else} statements for conditional execution.
 
-\begin{compactitem}
-    \item \mintpy{if} Statement -- Executes a block of code if a specified condition is true.
-    \item \mintpy{elif}  Statement -- Checks another condition if the previous conditions were false.
-    \item \mintpy{else} Statement -- Executes a block of code if none of the preceding conditions are true.
-\end{compactitem}
-\vspace*{\fill}
+	\begin{compactitem}
+		\item \mintpy{if} Statement -- Executes a block of code if a specified condition is true.
+		\item \mintpy{elif}  Statement -- Checks another condition if the previous conditions were false.
+		\item \mintpy{else} Statement -- Executes a block of code if none of the preceding conditions are true.
+	\end{compactitem}
+	\vspace*{\fill}
 \end{frame}
 
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \subsection{if Statement}
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \begin{frame}[fragile]{\secsecCode}
-\vspace*{\fill}
+	\vspace*{\fill}
 
-\faGripHorizontal~\mintpy{if}~\emphTitle{Statement}
+	\faGripHorizontal~\mintpy{if}~\emphTitle{Statement}
 
-The \mintpy{if} statement is used to test a condition and execute a block of code if the condition is true.
+	The \mintpy{if} statement is used to test a condition and execute a block of code if the condition is true.
 
-\begin{pylisting}[]{}
-x = 10
-if x > 5:
-    print("x is greater than 5")
-\end{pylisting}
+	\begin{pylisting}[]{}
+		x = 10
+		if x > 5:
+		print("x is greater than 5")
+	\end{pylisting}
 
-In this example, the \mintpy{print} statement will execute because the condition \mintpy{(x > 5)} is true.
-\vspace*{\fill}
+	In this example, the \mintpy{print} statement will execute because the condition \mintpy{(x > 5)} is true.
+	\vspace*{\fill}
 \end{frame}
 
 
@@ -1328,22 +1298,22 @@ In this example, the \mintpy{print} statement will execute because the condition
 \subsection{elif Statement}
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \begin{frame}[fragile]{\secsecCode}
-\vspace*{\fill}
+	\vspace*{\fill}
 
-\faGripHorizontal~\mintpy{elif}~\emphTitle{Statement}
+	\faGripHorizontal~\mintpy{elif}~\emphTitle{Statement}
 
-The \mintpy{elif} allows you to check multiple expressions for True and execute a block of code as soon as one of the conditions evaluates to True. It is used to include multiple conditional expressions after an initial if statement.
+	The \mintpy{elif} allows you to check multiple expressions for True and execute a block of code as soon as one of the conditions evaluates to True. It is used to include multiple conditional expressions after an initial if statement.
 
-\begin{pylisting}[]{}
-x = 10
-if x > 15:
-    print("x is greater than 15")
-elif x > 5:
-    print("x is greater than 5 but not greater than 15")
-\end{pylisting}
+	\begin{pylisting}[]{}
+		x = 10
+		if x > 15:
+		print("x is greater than 15")
+		elif x > 5:
+		print("x is greater than 5 but not greater than 15")
+	\end{pylisting}
 
-Here, the first condition \mintpy{x > 15} is false, so the program checks the next condition. Since \mintpy{x > 5} is true, it prints \mintpy{"x is greater than 5 but not greater than 15"}.
-\vspace*{\fill}
+	Here, the first condition \mintpy{x > 15} is false, so the program checks the next condition. Since \mintpy{x > 5} is true, it prints \mintpy{"x is greater than 5 but not greater than 15"}.
+	\vspace*{\fill}
 \end{frame}
 
 
@@ -1351,141 +1321,146 @@ Here, the first condition \mintpy{x > 15} is false, so the program checks the ne
 \subsection{else Statement}
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \begin{frame}[fragile]{\secsecCode}
-\vspace*{\fill}
+	\vspace*{\fill}
 
-\faGripHorizontal~\mintpy{else}~\emphTitle{Statement}
+	\faGripHorizontal~\mintpy{else}~\emphTitle{Statement}
 
-The \mintpy{else} statement catches anything which isn't caught by the preceding conditions. There can be at most one \mintpy{else} statement following an \mintpy{if}.
+	The \mintpy{else} statement catches anything which isn't caught by the preceding conditions. There can be at most one \mintpy{else} statement following an \mintpy{if}.
 
-\begin{pylisting}[]{}
-x = 3
-if x > 5:
-    print("x is greater than 5")
-else:
-    print("x is 5 or less")
-\end{pylisting}
+	\begin{pylisting}[]{}
+		x = 3
+		if x > 5:
+		print("x is greater than 5")
+		else:
+		print("x is 5 or less")
+	\end{pylisting}
 
-Since \mintpy{x > 5} is false, the \mintpy{else} block executes, printing \mintpy{"x is 5 or less"}.
-\vspace*{\fill}
+	Since \mintpy{x > 5} is false, the \mintpy{else} block executes, printing \mintpy{"x is 5 or less"}.
+	\vspace*{\fill}
 \end{frame}
 
 \subsection{if, else, and elif Statements}
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \begin{frame}[fragile]{\secsecCode}
-\vspace*{\fill}
+	\vspace*{\fill}
 
-\faGripHorizontal~\mintpy{if}, \mintpy{else}, and \mintpy{elif}~\emphTitle{Statements}
+	\faGripHorizontal~\mintpy{if}, \mintpy{else}, and \mintpy{elif}~\emphTitle{Statements}
 
-You can combine these statements to create complex conditional logic.
+	You can combine these statements to create complex conditional logic.
 
-\begin{pylisting}[]{}
-x = 20
-if x > 15:
-    print("x is greater than 15")
-elif x > 10:
-    print("x is greater than 10 but not greater than 15")
-else:
-    print("x is 10 or less")
-\end{pylisting}
+	\begin{pylisting}[]{}
+		x = 20
+		if x > 15:
+		print("x is greater than 15")
+		elif x > 10:
+		print("x is greater than 10 but not greater than 15")
+		else:
+		print("x is 10 or less")
+	\end{pylisting}
 
-This code checks multiple conditions in order. Since \mintpy{x > 15} is true, it prints \mintpy{"x is greater than 15"} and skips the rest of the conditions.
-\vspace*{\fill}
+	This code checks multiple conditions in order. Since \mintpy{x > 15} is true, it prints \mintpy{"x is greater than 15"} and skips the rest of the conditions.
+	\vspace*{\fill}
 \end{frame}
 
 
 \subsection{Nested if Statements}
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \begin{frame}[fragile]{\secsecCode}
-\vspace*{\fill}
+	\vspace*{\fill}
 
-\faGripHorizontal~\emphTitleShort{Nested}~\mintpy{if}~\emphTitle{Statements}
+	\faGripHorizontal~\emphTitleShort{Nested}~\mintpy{if}~\emphTitle{Statements}
 
-You can nest \mintpy{if} statements inside other if statements to create more specific conditions.
+	You can nest \mintpy{if} statements inside other if statements to create more specific conditions.
 
-\begin{pylisting}[]{}
-x = 5
-if x > 3:
-    print("x is greater than 3")
-    if x >= 5:
-        print("x is also at least 5")
-    else:
-        print("x is less than 5")
-\end{pylisting}
+	\begin{pylisting}[]{}
+		x = 5
+		if x > 3:
+		print("x is greater than 3")
+		if x >= 5:
+		print("x is also at least 5")
+		else:
+		print("x is less than 5")
+	\end{pylisting}
 
-This will print \mintpy{"x is greater than 3"} followed by \mintpy{"x is also at least 5"} because both conditions are true.
-\vspace*{\fill}
+	This will print \mintpy{"x is greater than 3"} followed by \mintpy{"x is also at least 5"} because both conditions are true.
+	\vspace*{\fill}
 \end{frame}
 
 \subsection{Boolean Logic}
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \begin{frame}[fragile]{\secsecCode}
-\vspace*{\fill}
+	\vspace*{\fill}
 
-\faGripHorizontal~\emphTitle{Boolean Logic}
+	\faGripHorizontal~\emphTitle{Boolean Logic}
 
-You can use Boolean logic (\mintpy{and}, \mintpy{or}, \mintpy{not}) in your conditional statements to combine conditions.
+	You can use Boolean logic (\mintpy{and}, \mintpy{or}, \mintpy{not}) in your conditional statements to combine conditions.
 
-\begin{pylisting}[]{}
-x = 7
-if x > 5 and x < 10:
-    print("x is greater than 5 and less than 10")
+	\begin{pylisting}[]{}
+		x = 7
+		if x > 5 and x < 10:
+		print("x is greater than 5 and less than 10")
 
-if not x == 7:
-    print("x is not equal to 7")
-else:
-    print("x is equal to 7")
-\end{pylisting}
+		if not x == 7:
+		print("x is not equal to 7")
+		else:
+		print("x is equal to 7")
+	\end{pylisting}
 
-This checks if \mintpy{x} is between 5 and 10 and then whether \mintpy{x} is not equal to 7. Since \mintpy{x} is 7, it prints \mintpy{"x is greater than 5 and less than 10"} and \mintpy{"x is equal to 7"}.
-\vspace*{\fill}
+	This checks if \mintpy{x} is between 5 and 10 and then whether \mintpy{x} is not equal to 7. Since \mintpy{x} is 7, it prints \mintpy{"x is greater than 5 and less than 10"} and \mintpy{"x is equal to 7"}.
+	\vspace*{\fill}
 \end{frame}
 
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \section{Iteration Statements}
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \begin{frame}[fragile]{\sec}
-\vspace*{\fill}
+	\vspace*{\fill}
 
-\mydefinition~\emphTitle{Iteration Statements}
+	\mydefinition~\emphTitle{Iteration Statements}
 
-Iteration statements (or loops) in Python are used to repeatedly execute a block of code as long as a certain condition is met, making them essential for tasks that require repetition. Python provides two primary types of loops: \mintpy{for} loops and \mintpy{while} loops.
+	Iteration statements (or loops) in Python are used to repeatedly execute a block of code as long as a certain condition is met, making them essential for tasks that require repetition. Python provides two primary types of loops: \mintpy{for} loops and \mintpy{while} loops.
 
-\vspace*{\fill}
+	\vspace*{\fill}
 \end{frame}
 
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \subsection{for Loops}
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \begin{frame}[fragile]{\secsecCode}
-\vspace*{\fill}
+	\vspace*{\fill}
 
-\mydefinition~\mintpy{for}~\emphTitle{Loops}
+	\mydefinition~\mintpy{for}~\emphTitle{Loops}
 
-A for loop in Python is used to iterate over a sequence (such as a list, tuple, dictionary, set, or string) or other iterable objects. Iterating over a sequence means going through each item in the sequence. The syntax of a for loop is:
+	A \mintpy{for} loop in Python is used to iterate over a sequence (such as a list, tuple, dictionary, set, or string) or other iterable objects. Iterating over a sequence means going through each item in the sequence. The syntax of a for loop is:
 
-\vspace*{\fill}
+	\begin{pylisting}[]{\footnotesize}
+		for item in sequence:
+		  # do something with item
+	\end{pylisting}
+
+	\vspace*{\fill}
 \end{frame}
 
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \subsection{while Loops}
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \begin{frame}[fragile]{\secsecCode}
-\vspace*{\fill}
+	\vspace*{\fill}
 
-\mydefinition~\mintpy{while}~\emphTitle{Loops}
+	\mydefinition~\mintpy{while}~\emphTitle{Loops}
 
-\vspace*{\fill}
+	\vspace*{\fill}
 \end{frame}
 
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \subsection{Loop Control Statement}
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \begin{frame}[fragile]{\secsec}
-\vspace*{\fill}
+	\vspace*{\fill}
 
-\mydefinition~\emphTitle{Loop Control Statement}
+	\mydefinition~\emphTitle{Loop Control Statement}
 
-\vspace*{\fill}
+	\vspace*{\fill}
 \end{frame}
 
 
@@ -1502,9 +1477,9 @@ A for loop in Python is used to iterate over a sequence (such as a list, tuple, 
 \section{Exception Handling}
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 \begin{frame}[fragile]{\sec}
-\vspace*{\fill}
+	\vspace*{\fill}
 
-\vspace*{\fill}
+	\vspace*{\fill}
 \end{frame}
 
 
